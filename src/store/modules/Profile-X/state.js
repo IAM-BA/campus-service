@@ -1,3 +1,3 @@
 export default {
-  logState: true,
+  logState: false,
 }

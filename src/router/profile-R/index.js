@@ -6,8 +6,11 @@ const Register = () => import('views/profile/account/Register')
 export default {
   path: '/profile',
   component: Profile,
+  beforeEnter: (to, from, next) =>{
+    next()
+  },
   meta: {
-    title: '个人中心'
+    title: '个人中心',
   },
   children: [
     {

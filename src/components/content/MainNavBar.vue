@@ -21,18 +21,12 @@
 
       <el-menu-item index="/runErrands" class="nav-flex-child">跑腿</el-menu-item>
 
-      <el-submenu index="/information" class="nav-flex-child">
-        <template slot="title">资讯</template>
-        <el-menu-item index="/information/universitiesInfo">校园资讯</el-menu-item>
-        <el-menu-item index="/information/association">社团招新</el-menu-item>
-        <el-menu-item index="/information/community">趣味社区</el-menu-item>
-      </el-submenu>
+      <el-menu-item index="/information" class="nav-flex-child">校园资讯</el-menu-item>
 
       <div class="nav-flex-child"></div>
 
       <el-menu-item index="/profile" class="nav-flex-child" v-if="isLog">我的</el-menu-item>
-      <el-menu-item index="/profile/logon" class="nav-flex-child" v-else>登陆/注册</el-menu-item>
-
+      <el-menu-item index="/profile" class="nav-flex-child" v-else>登录/注册</el-menu-item>
 
       <div class="nav-flex-child"></div>
     </el-menu>
@@ -52,7 +46,8 @@
     },
     computed: {
       isActive(){
-        return this.$route.path
+        //匹配字符串进行激活
+        return this.$route.path.match(/(\/[\s\S]*?)(\/|$)/)[1]
       //  每次跳转后保持激活状态
       },
       routerSwitch(){

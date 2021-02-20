@@ -1,12 +1,15 @@
 <template>
   <div>
-    <h2>跳蚤市场</h2>
+    <keep-alive>
+       <router-view></router-view>
+    </keep-alive>
   </div>
 </template>
 
 <script>
   export default {
-    name: "SecondHand"
+    name: "SecondHand",
+  
   }
 </script>
 

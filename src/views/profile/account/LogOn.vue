@@ -1,15 +1,34 @@
 <template>
   <div>
-    <h2>登录界面</h2>
+    <div class="background">
+      <net-test></net-test>
+    </div>
   </div>
 </template>
 
 <script>
+  import NetTest from "../../NetTest";
+
   export default {
-    name: "LogOn"
+    name: "LogOn",
+    components: {
+      NetTest
+    },
+    methods: {
+      isLog(){
+        // 请求是否登录
+        return this.$store.state.ProfileX.logState
+      }
+    }
   }
 </script>
 
 <style scoped>
+  .background{
+    background-color: lightblue;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
 
 </style>
