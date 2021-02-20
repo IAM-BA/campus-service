@@ -1,15 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
+
 const Home = () => import('views/home/Home')
-const Coach = () => import('views/coach/Coach')
-const Information = () => import('views/information/Information')
-const RunErrands = () => import('views/runErrands/RunErrands')
-const SecondHand = () => import('views/secondHand/SecondHand')
-const Profile = () => import('views/profile/Profile')
+
+import CoachR from './coach-R'
+import InformationR from './information-R'
+import ProfileR from './profile-R'
+import RunErrandsR from './runErrands-R'
+import SecondHandR from './secondHand-R'
+
 
 Vue.use(VueRouter)
-
+// 此处做好了抽离
 const routes = [
   {
     path: '/',
@@ -17,34 +21,29 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home
+    component: Home,
+    meta: {
+      title: '校园生活服务平台'
+    },
   },
-  {
-    path: '/coach',
-    component: Coach
-  },
-  {
-    path: '/information',
-    component: Information
-  },
-  {
-    path: '/runErrands',
-    component: RunErrands
-  },
-  {
-    path: '/secondHand',
-    component: SecondHand
-  },
-  {
-    path: '/profile',
-    component: Profile
-  },
+
+
+  CoachR,
+  InformationR,
+  ProfileR,
+  RunErrandsR,
+  SecondHandR,
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) =>{
+  document.title = to.matched[0].meta.title
+  next()
 })
 
 export default router

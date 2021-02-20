@@ -1,14 +1,12 @@
 <template>
   <div>
-    <h2>资讯总览</h2>
-
-    <router-view></router-view>
+    <h2>注册界面</h2>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Information"
+    name: "Register"
   }
 </script>
 
