@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import MainNavBar from "./components/common/MainNavBar";
+  import MainNavBar from "./components/content/MainNavBar";
 
 
   export default {
