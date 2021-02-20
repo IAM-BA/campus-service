@@ -30,7 +30,9 @@
 
       <div class="nav-flex-child"></div>
 
-      <el-menu-item index="/profile" class="nav-flex-child">我的</el-menu-item>
+      <el-menu-item index="/profile" class="nav-flex-child" v-if="isLog">我的</el-menu-item>
+      <el-menu-item index="/profile/logon" class="nav-flex-child" v-else>登陆/注册</el-menu-item>
+
 
       <div class="nav-flex-child"></div>
     </el-menu>
@@ -54,7 +56,12 @@
       //  每次跳转后保持激活状态
       },
       routerSwitch(){
+        // Element路由模式开关
         return true;
+      },
+      isLog(){
+        // 请求是否登录
+        return this.$store.state.ProfileX.logState
       }
     },
 
