@@ -3,7 +3,9 @@
     <h2>网络请求测试页</h2>
     <div>
       <li v-for="item in result">{{item}}</li>
+      <i class="el-icon-edit"></i>
     </div>
+
   </div>
 </template>
 
@@ -26,6 +28,9 @@
       getTestData()
         .then(res => {
           this.result = res
+        })
+        .catch(err => {
+          this.result = "非常抱歉请求失败"
         })
     }
   }

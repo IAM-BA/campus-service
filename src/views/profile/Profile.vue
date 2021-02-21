@@ -7,22 +7,10 @@
 </template>
 
 <script>
-  import {request} from "network/request";
-
-  import NetTest from "../NetTest";
-
-  request({
-    url: '/student/list'
-  }).then(res => {
-
-  }).catch(err => {
-
-  })
 
   export default {
     name: "Profile",
     components: {
-      NetTest
     },
     data() {
       return {
@@ -47,10 +35,7 @@
       // console.log('deactivated')
     },
     beforeRouteUpdate (to, from, next) {
-      if (this.path !== to.path){
-        next(false)
-      }
-      else{
+      if (this.path === to.path){
         next()
       }
     },

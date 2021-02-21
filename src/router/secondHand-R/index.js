@@ -4,7 +4,7 @@ const BuySomthing =()=>import('views/secondHand/secondHandItems/BuySomething')
 const SellSomthing =()=>import('views/secondHand/secondHandItems/SellSomething')
 const Order =()=>import('views/secondHand/secondHandItems/Order')
 const Phone =()=>import('views/secondHand/secondHandItems/BuySomethingItems/Phone')
-
+const Recommend = () => import('views/secondHand/secondHandItems/Recommend')
 
 export default {
   path: '/secondHand',
@@ -14,8 +14,8 @@ export default {
   },
   children:[//嵌套使用
     {
-      path: '/',
-      redirect: 'buysomthing'
+      path: "/",
+      redirect: 'recommend'
     },
     {
       path:'buysomthing',
@@ -36,6 +36,10 @@ export default {
       path:'order',
       component:Order,
     },
+    {
+      path:'recommend',
+      component: Recommend
+    }
 
   ],
 }

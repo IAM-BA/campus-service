@@ -2,9 +2,9 @@
   <div id="main-nav-bar">
     <el-menu
             :default-active="isActive"
-            class="el-menu-demo nav-flex-father"
-            mode="horizontal"
-            @select=""
+            class="nav-flex-father"
+            mode="vertical"
+            @select="handleSelect"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b"
@@ -41,7 +41,7 @@
     },
     data(){
       return {
-
+        activeIndex: "/home"
       }
     },
     computed: {
@@ -59,6 +59,11 @@
         return this.$store.state.ProfileX.logState
       }
     },
+    methods: {
+      handleSelect(key, keyPath) {
+        // console.log(key, keyPath);
+      }
+    }
 
   }
 </script>
@@ -68,8 +73,10 @@
 
   .nav-flex-father{
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: flex-start;
+    align-content: flex-start;
+    border-right: none;
   }
   .nav-flex-child{
     flex: 1;
