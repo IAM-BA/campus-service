@@ -19,7 +19,7 @@
             <el-menu-item-group>
               <template slot="title">数码产品</template>
               <el-menu-item index="/secondHand/buysomthing/phone" ><i class="el-icon-mobile"></i>手机</el-menu-item>
-              <el-menu-item index="/secondHand/buysomthing/"><i class="el-icon-monitor"></i>电脑</el-menu-item>
+              <el-menu-item index="/secondHand/buysomthing/computer"><i class="el-icon-monitor"></i>电脑</el-menu-item>
               <el-menu-item index="1-3"><i class="el-icon-printer"></i>其他电子产品</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group >

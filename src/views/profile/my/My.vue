@@ -1,12 +1,12 @@
 <template>
-  <keep-alive>
-    <router-view></router-view>
-  </keep-alive>
+  <div>
+    <h2>这里是登录激活页面</h2>
+  </div>
 </template>
 
 <script>
   export default {
-    name: "Coach"
+    name: "My"
   }
 </script>
 
