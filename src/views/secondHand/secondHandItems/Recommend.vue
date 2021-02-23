@@ -8,13 +8,15 @@
       </el-carousel>
     </div>
     <div class="lable_shuma">
-
+      <recom-bar></recom-bar>
     </div>
   </div>
 
 </template>
 
 <script type="text/javascript">
+import RecomBar from 'components/content/secondHand/RecomBar'
+
   export default {
     name: "app",
     data() {
@@ -40,6 +42,7 @@
       }
     },
     components: {
+      RecomBar
 
     }
   }
@@ -68,6 +71,7 @@
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
   }
+  
 
 </style>
 

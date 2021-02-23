@@ -5,44 +5,60 @@
       status-icon
       :rules="rules"
       ref="ruleForm"
-      label-width="10vh"
-      class="flex-father">
+      label-width="12vh">
 
-      <el-form-item label="手机号码" prop="phone" class="flex-item">
-        <el-input
-          maxlength="11"
-          v-model="ruleForm.phone"
-          show-word-limit
-          autocomplete="off"></el-input>
-        <el-button type="info" @click="sendACode" class="flex-button" size="mini" :disabled="isTruePhone">{{btMessage}}</el-button>
-      </el-form-item>
+      <div id="PhoneLogin" v-if="activeArr[0]" class="flex-father">
+        <el-form-item label="手机号码" prop="phone" class="flex-item">
+          <el-input
+            maxlength="11"
+            v-model="ruleForm.phone"
+            show-word-limit
+            autocomplete="off"></el-input>
+          <el-button type="info" @click="sendACode" class="flex-button" size="mini" :disabled="isTruePhone">{{btMessage}}</el-button>
+        </el-form-item>
 
-      <el-form-item label="验证码" prop="verificationCode" class="flex-item" >
-        <el-input
-          maxlength="6"
-          v-model="ruleForm.verificationCode"
-          show-word-limit
-          autocomplete="off"
-          :disabled="isTruePhone"></el-input>
-      </el-form-item>
+        <el-form-item label="验证码" prop="verificationCode" class="flex-item" >
+          <el-input
+            maxlength="6"
+            v-model="ruleForm.verificationCode"
+            show-word-limit
+            autocomplete="off"
+            :disabled="isTruePhone"></el-input>
+        </el-form-item>
 
-      <el-form-item label="密码" prop="pass" class="flex-item">
-        <el-input type="password"
-                  maxlength="16"
-                  v-model="ruleForm.pass"
-                  autocomplete="off"
-                  :show-password="isShowPWD"></el-input>
-      </el-form-item>
-
-      <div class="flex-item flex-father-line">
-        <el-button type="primary" @click="submitForm('ruleForm')" class="flex-button">登录</el-button>
+        <div class="flex-item flex-father-line">
+          <el-button type="primary" @click="submitForm('ruleForm')" class="flex-button">登录</el-button>
+        </div>
       </div>
+
+
+      <div id="AccountLogin" v-else-if="activeArr[1]" class="flex-father">
+        <el-form-item label="账号" prop="account" class="flex-item">
+          <el-input type="text"
+                    maxlength="16"
+                    v-model="ruleForm.account"
+                    autocomplete="off">
+          </el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="pass" class="flex-item">
+          <el-input type="password"
+                    maxlength="16"
+                    v-model="ruleForm.pass"
+                    autocomplete="off"
+                    :show-password="isShowPWD"></el-input>
+        </el-form-item>
+        <div class="flex-item flex-father-line">
+          <el-button type="primary" @click="submitForm('ruleForm')" class="flex-button">登录</el-button>
+        </div>
+      </div>
+
 
     </el-form>
   </div>
 </template>
 
 <script>
+  import Vue from "vue"
   export default {
     name: "LoginForm",
     data() {
@@ -105,16 +121,38 @@
           callback();
         }
       };
+
+      var checkAccount = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('账号不能为空'));
+        }
+        setTimeout(() => {
+          if(value.length < 6){
+            callback(new Error('长度不能小于6位'))
+          }
+          else if (this.Acode !== value) {
+            callback(new Error('请输入正确的验证码'));
+          }
+          else{
+            callback();
+          }
+        }, 1000);
+      };
       return {
+        activeArr: [false,false],
+        isActiveNow: 0,
         isTruePhone: true,
         isShowPWD: true,
+
+
         btMessage: "发送验证码",
         Acode: "",
         ruleForm: {
           pass: '',
           checkPass: '',
           phone: '',
-          verificationCode: ''
+          verificationCode: '',
+          account: ''
         },
         rules: {
           pass: [
@@ -128,6 +166,9 @@
           ],
           verificationCode: [
             { validator: checkVerificationCode, trigger: 'blur' }
+          ],
+          checkAccount: [
+            { validator: checkAccount, trigger: 'blur' }
           ]
         }
       };
@@ -135,6 +176,11 @@
     computed: {
     },
     methods: {
+      startActive(activeName) {
+        Vue.set(this.activeArr, this.isActiveNow,false)
+        Vue.set(this.activeArr, activeName-1,true)
+        this.isActiveNow = activeName-1
+      },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {

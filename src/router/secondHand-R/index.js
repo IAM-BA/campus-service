@@ -4,6 +4,7 @@ const BuySomthing =()=>import('views/secondHand/secondHandItems/BuySomething')
 const SellSomthing =()=>import('views/secondHand/secondHandItems/SellSomething')
 const Order =()=>import('views/secondHand/secondHandItems/Order')
 const Phone =()=>import('views/secondHand/secondHandItems/BuySomethingItems/Phone')
+const Computer =()=>import('views/secondHand/secondHandItems/BuySomethingItems/Computer')
 const Recommend = () => import('views/secondHand/secondHandItems/Recommend')
 
 export default {
@@ -24,6 +25,10 @@ export default {
         {
           path:'phone',
           component:Phone
+        },
+        {
+          path:'computer',
+          component:Computer
         }
 
       ],

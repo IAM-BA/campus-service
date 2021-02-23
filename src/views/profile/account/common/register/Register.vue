@@ -1,7 +1,7 @@
 <template>
   <div  style="width: 100%;height: 100%">
     <box-layout>
-      <header-item slot="header"></header-item>
+      <register-header-item slot="header"></register-header-item>
       <register-form slot="main-left"></register-form>
       <beside-nav slot="main-right"></beside-nav>
       <div slot="foot">foot</div>
@@ -11,7 +11,7 @@
 
 <script>
   import BoxLayout from "../box/BoxLayout";
-  import HeaderItem from "../HeaderItem";
+  import RegisterHeaderItem from "./RegisterHeaderItem";
   import RegisterForm from "./RegisterForm";
   import BesideNav from "../BesideNav";
 
@@ -20,7 +20,7 @@
     name: "Register",
     components: {
       BoxLayout,
-      HeaderItem,
+      RegisterHeaderItem,
       RegisterForm,
       BesideNav
     }

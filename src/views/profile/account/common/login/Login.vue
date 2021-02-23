@@ -1,8 +1,8 @@
 <template>
   <div  style="width: 100%;height: 100%">
     <box-layout>
-      <header-item slot="header"></header-item>
-      <login-form slot="main-left"></login-form>
+      <login-header-item slot="header"></login-header-item>
+      <login-form slot="main-left" ref="form"></login-form>
       <beside-nav slot="main-right"></beside-nav>
       <div slot="foot">foot</div>
     </box-layout>
@@ -11,15 +11,24 @@
 
 <script>
   import BoxLayout from "../box/BoxLayout";
-  import HeaderItem from "../HeaderItem";
+  import LoginHeaderItem from "./LoginHeaderItem";
   import LoginForm from "./LoginForm";
   import BesideNav from "../BesideNav";
 
   export default {
     name: "Login",
+    data() {
+      return {
+      }
+    },
+    methods: {
+      changeForm(activeName) {
+        this.$refs.form.startActive(activeName)
+      }
+    },
     components: {
       BoxLayout,
-      HeaderItem,
+      LoginHeaderItem,
       LoginForm,
       BesideNav
     },

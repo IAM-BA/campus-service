@@ -38,7 +38,6 @@
     },
     methods: {
       handleOpen(key, keyPath) {
-
       },
       handleClose(key, keyPath) {
 
